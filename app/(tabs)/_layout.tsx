@@ -1,4 +1,5 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Link, Tabs } from 'expo-router';
 import { Pressable, useColorScheme } from 'react-native';
 
@@ -25,8 +26,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Refrigerator',
+          tabBarIcon: () => <MaterialCommunityIcons name="fridge-bottom" size={24} color="black" />,
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>
@@ -44,10 +45,24 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="freezer"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Freezer',
+          tabBarIcon: () => <MaterialCommunityIcons name="fridge-top" size={24} color="black" />,
+        }}
+      />
+      <Tabs.Screen
+        name="pantry"
+        options={{
+          title: 'Panty',
+          tabBarIcon: () => <MaterialCommunityIcons name="bread-slice-outline" size={24} color="black" />,
+        }}
+      />
+      <Tabs.Screen
+        name="counter"
+        options={{
+          title: 'Counter',
+          tabBarIcon: () => <MaterialCommunityIcons name="countertop-outline" size={24} color="black" />,
         }}
       />
     </Tabs>

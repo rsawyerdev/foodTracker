@@ -1,13 +1,21 @@
-import { StyleSheet } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
+import ItemCard from '../../components/Item';
 
 export default function CounterScreen() {
+  const items = [
+    { name: 'marinated chicken', date: '2023-12-28', id: 1 },
+  ]
+
+  const _renderItem = ({item, index}: {item: any, index: any}) => {
+    return <ItemCard name={item.name}/>;
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Counter</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <FlatList data={items} keyExtractor={(item, index) =>`${item.id}`} renderItem={_renderItem} />
     </View>
   );
 }

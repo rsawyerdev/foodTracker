@@ -1,51 +1,23 @@
-import { StyleSheet, TextInput,View, Button, Text, Pressable } from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
-import { useState } from 'react';
+import { StyleSheet, TextInput,View, Button, Text, Pressable, ScrollView, FlatList } from 'react-native';
+import ItemCard from '../../components/Item';
 
 
 export default function PantryScreen() {
 
-    const [date, setDate] = useState(new Date(Date.now()));
-    const [mode, setMode] = useState('date');
-    const [show, setShow] = useState(false);
-  
-    const onChange = (event, selectedDate: any) => {
-      const currentDate = selectedDate;
-      setShow(false);
-      setDate(currentDate);
-    };
-  
-    const showMode = (currentMode: string) => {
-      setShow(true);
-      setMode(currentMode);
-    };
-  
-    const showDatepicker = () => {
-      showMode('date');
-    };
-  
-    const showTimepicker = () => {
-      showMode('time');
-    };
-   
+  const items = [
+    { name: 'chickpeas', date: '2023-12-28', id: 1 },
+    { name: 'rice pilaf', date: '2023-12-27', id: 2 },
+    { name: 'granola', date: '2023-12-28', id: 3 },
+    { name: 'bread crumbs', date: '2023-12-26', id: 4 },
+  ]
+
+  const _renderItem = ({item, index}: {item: any, index: any}) => {
+    return <ItemCard name={item.name}/>;
+  };
+
   return (
     <View style={styles.container}>
-      <View>
-        <TextInput placeholder='name'/>
-      {/* <Button onPress={showTimepicker} title="Show time picker!" /> */}
-      <Pressable onPress={showDatepicker}>
-      <Text>Added: {date.toDateString()}</Text>
-      </Pressable>
-      {show && (
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={date}
-          mode={mode}
-          is24Hour={true}
-          onChange={onChange}
-        />
-      )}
-      </View>
+      <FlatList data={items} keyExtractor={(item, index) =>`${item.id}`} renderItem={_renderItem} />
     </View>
   );
 }

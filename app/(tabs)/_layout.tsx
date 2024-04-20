@@ -61,8 +61,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="counter"
         options={{
-          title: 'Counter',
-          tabBarIcon: () => <MaterialCommunityIcons name="countertop-outline" size={24} color="black" />,
+          title: 'Grocery Stores',
+          tabBarIcon: () => <MaterialCommunityIcons name="store-marker" size={24} color="black" />,
         }}
       />
     </Tabs>

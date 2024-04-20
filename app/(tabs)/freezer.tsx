@@ -3,14 +3,12 @@ import { FlatList, StyleSheet } from 'react-native';
 import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
 import ItemCard from '../../components/Item';
-import { useRef } from 'react';
 
-export default function RefrigeratorScreen() {
+export default function FreezerScreen() {
   const items = [
     { name: 'marinated chicken', date: '2023-12-28', id: 1 },
-    { name: 'milk', date: '2023-12-27', id: 2 },
-    { name: 'blueberries', date: '2023-12-28', id: 3 },
-    { name: 'marinated chicken', date: '2023-12-26', id: 4 },
+    { name: 'bread', date: '2023-12-27', id: 2 },
+    { name: 'chicken nuggets', date: '2023-12-26', id: 4 },
   ]
 
   const _renderItem = ({item, index}: {item: any, index: any}) => {

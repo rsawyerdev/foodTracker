@@ -29,12 +29,12 @@ export default function ItemCard(props: any) {
     };
    
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, props.containerStyle]}>
       <View style={{borderColor: 'black', borderWidth: .5, padding: 10, borderRadius: 10}}>
         <TextInput placeholder='Product Name' value={props.name}/>
       {/* <Button onPress={showTimepicker} title="Show time picker!" /> */}
       <Pressable onPress={()=>setShow(true)}>
-      <Text>Added: {date.toDateString()}</Text>
+      {/* <Text>Added: {date.toDateString()}</Text> */}
       </Pressable>
       {show && (
         <DateTimePicker

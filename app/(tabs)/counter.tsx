@@ -19,7 +19,6 @@ export default function CounterScreen() {
       const { data } = await Axios.get(
         `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=grocery&location=36.822350,-76.120712&radius=5&key=${key}`
       );
-      console.log('result', data.results);
       setStores(data.results);
     } catch (error) {
       console.log('error message:', error.response.data);

@@ -8,10 +8,10 @@ import ItemCard from '../../components/Item';
 
 export default function CounterScreen() {
   const [stores, setStores] = useState<any>();
+  const [errorMsg, setErrorMsg] = useState<string>();
 
   const [locationPermission, requestLocationPermission] =
     Location.useForegroundPermissions();
-  const [errorMsg, setErrorMsg] = useState<string>();
 
   useEffect(() => {
     if (!locationPermission?.status) requestLocationPermission();
@@ -30,9 +30,11 @@ export default function CounterScreen() {
   const key = process.env.EXPO_PUBLIC_GOOGLE_API_KEY;
 
   const getData = async () => {
+   const currentLocation = await (await Location.getCurrentPositionAsync()).coords
+   const {latitude, longitude} = currentLocation
     try {
       const { data } = await Axios.get(
-        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=grocery&location=36.822350,-76.120712&radius=5&key=${key}`
+        `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=grocery&location=${latitude},${longitude}&radius=5&key=${key}`
       );
       setStores(data.results);
     } catch (error: any) {

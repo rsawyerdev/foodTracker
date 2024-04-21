@@ -1,0 +1,22 @@
+{
+  "cli": {
+    "version": ">= 7.8.2"
+  },
+  "build": {
+    "development": {
+      "developmentClient": false,
+      "distribution": "internal",
+      "channel": "development"
+    },
+    "dev": {
+      "distribution": "internal",
+      "channel": "dev"
+    },
+    "production": {
+      "channel": "production"
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
